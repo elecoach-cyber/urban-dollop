@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Coaching Package</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+        }
+        .card.featured {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 2px solid var(--accent);
+            box-shadow: 0 8px 30px var(--accent-glow);
+        }
+        .price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 20px 0 10px 0;
+        }
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--text-muted);
+        }
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+            color: var(--text-muted);
+        }
+        .features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .features li:last-child {
+            border-bottom: none;
+        }
+        .btn {
+            display: block;
+            text-align: center;
+            background-color: var(--accent);
+            color: #0f172a;
+            padding: 14px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+        .back-link:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Choose Your Path</h1>
+            <p>Select whether you want a single intensive session or a multi-pack bundle for continuous progress.</p>
+        </header>
+
+        <div class="pricing-grid">
+            <!-- Single Session Card -->
+            <div class="card">
+                <div>
+                    <h2>Single Session</h2>
+                    <p>Perfect for targeted troubleshooting, strategy reviews, or a single test run.</p>
+                    <div class="price">€X.XX <span>/ session</span></div>
+                    <ul class="features">
+                        <li>1-on-1 Live Video Call</li>
+                        <li>Focused, actionable roadmap</li>
+                        <li>Session summary notes</li>
+                    </ul>
+                </div>
+                <a href="YOUR_TIDYCAL_SINGLE_LINK" class="btn">Book Single Session</a>
+            </div>
+
+            <!-- Multi-Pack Card -->
+            <div class="card featured">
+                <div>
+                    <h2>Multi-Pack Bundle</h2>
+                    <p>Best value for long-term growth, deep projects, and ongoing mentorship.</p>
+                    <div class="price">€X.XX <span>/ 4-pack</span></div>
+                    <ul class="features">
+                        <li>4 Individual Sessions</li>
+                        <li>Priority scheduling access</li>
+                        <li>Continuous asynchronous support</li>
+                        <li>Discounted bundle rate</li>
+                    </ul>
+                </div>
+                <a href="YOUR_TIDYCAL_MULTIPACK_LINK" class="btn">Get Multi-Pack</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
