@@ -1,0 +1,47 @@
+name: Auto-Swap Weekend Hub
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every midnight UTC
+  workflow_dispatch: # Allows manual testing from the Actions tab
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Check Day and Swap Files
+        run: |
+          DAY=$(date +%u) # 6 = Saturday, 7 = Sunday
+          echo "Current day of week (1=Mon ... 6=Sat, 7=Sun): $DAY"
+          
+          # If it's Saturday/Sunday and lab.html exists
+          if ([ "$DAY" -eq 6 ] || [ "$DAY" -eq 7 ]) && [ -f "lab.html" ]; then
+            echo "Weekend detected: Switching to Lab homepage."
+            if [ -f "index.html" ]; then mv index.html coach.html; fi
+            mv lab.html index.html
+          # If it's a weekday (1-5) and coach.html exists
+          elif [ "$DAY" -lt 6 ] && [ -f "coach.html" ]; then
+            echo "Weekday detected: Switching to Coaching homepage."
+            if [ -f "index.html" ]; then mv index.html lab.html; fi
+            mv coach.html index.html
+          else
+            echo "No file swap needed today."
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
